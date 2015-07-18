@@ -7,9 +7,11 @@ filetype indent on
 " color scheme
 " colorscheme monokai
 set background=dark
-"let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
 
 " colorscheme twilight
+colorscheme solarized
+
 
 " line numbers
 set number
@@ -193,6 +195,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'scrooloose/syntastic' " syntax check
 Plugin 'majutsushi/tagbar'
+Plugin 'terryma/vim-multiple-cursors'
 " Plugin 'taglist'
 " Plugin 'joonty/vdebug'
 Plugin 'lpenz/vimcommander' " http://habrahabr.ru/post/137170/
@@ -234,4 +237,4 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
-colorscheme solarized
+" colorscheme solarized
