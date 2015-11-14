@@ -4,13 +4,13 @@ filetype indent on
 
 
 " color scheme
-" colorscheme monokai
 set background=dark
 " let g:solarized_termcolors=256
 
+" colorscheme monokai
 " colorscheme twilight
-colorscheme solarized
-
+" colorscheme solarized
+" need to set solarized after plugins
 
 " line numbers
 set number
@@ -239,4 +239,5 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
-" colorscheme solarized
+" need to set solarized after plugins
+colorscheme solarized
