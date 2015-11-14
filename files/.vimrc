@@ -3,7 +3,6 @@ filetype indent on
 
 
 
-
 " color scheme
 " colorscheme monokai
 set background=dark
@@ -26,11 +25,14 @@ map <Esc><Esc><Esc> :q!<CR>
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 
-" Ctrl-S working
-nmap <c-s> :w<CR>
-vmap <c-s> <Esc><c-s>gv
-imap <c-s> <Esc><c-s>
-imap <c-v> <Esc>p:i<CR>
+" Сохранить файл по <F2>
+nmap <F2> :w!<CR>
+imap <F2> <Esc>:w!<CR>
+vmap <F2> <Esc>:w!<CR>
+inoremap <F2> <c-o>:w<CR>
+
+"imap <c-z> <Esc>u<CR>
+inoremap <c-z> <c-o>u<CR>
 
 " exit on Esc-0
 map <Esc>0 :q<CR>
