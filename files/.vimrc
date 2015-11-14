@@ -1,29 +1,92 @@
-filetype plugin on
-filetype indent on
+" http://konishchevdmitry.blogspot.ru/2008/07/howto-vim.html
+" http://sarkisn.github.io/blog/2014/02/22/vim-config-install/
+
+" begin of Vundle include
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Bundle 'gmarik/Vundle.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'evanmiller/nginx-vim-syntax'
+" syntax check
+Bundle 'scrooloose/syntastic'
+Bundle 'majutsushi/tagbar'
+Bundle 'terryma/vim-multiple-cursors'
+" http://habrahabr.ru/post/137170/
+Bundle 'lpenz/vimcommander'
+" startup window
+Bundle 'mhinz/vim-startify'
+Bundle 'tpope/vim-surround'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'Markdown'
+Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" Bundle 'git://git.wincent.com/command-t.git'
+" Bundle 'risbra/csv.vim'
+" Bundle 'mru'
+" Bundle 'taglist'
+" Bundle 'joonty/vdebug'
+" Bundle 'wakatime/vim-wakatime'
+" Bundle 'daylerees/colour-schemes', {'rtp': 'vim/'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required for Vundle
+
+syntax enable
+set number                   " line numbers
+set mouse=a                  " mouse wheel, see :help mouse
+colorscheme solarized        " let g:solarized_termcolors=256
+set background=dark          " color scheme
 
 
 
-" color scheme
-set background=dark
-" let g:solarized_termcolors=256
 
-" colorscheme monokai
-" colorscheme twilight
-" colorscheme solarized
-" need to set solarized after plugins
+""""""" Basic settings """""""
 
-" line numbers
-set number
+set laststatus=2             " Always show Powerline
+set backspace=indent,eol,start " backspace fix - http://vim.wikia.com/wiki/Backspace_and_delete_problems
 
-" mouse wheel, see :help mouse
-set mouse=a
+
+set tabstop=4                " Размер табуляции
+set shiftwidth=4             " Размер сдвига при нажатии на клавиши << и >>
+set autoindent               " Копирует отступ от предыдущей строки
+set smartindent              " Включаем 'умную' автоматическую расстановку отступов
+set wrap                     " Включаем перенос строк
+set linebreak                " Перенос строк по словам, а не по буквам
+set showcmd                  " Включаем отображение выполняемой в данный момент команды в правом нижнем углу экрана
+set hlsearch                 " Включаем подсветку выражения, которое ищется в тексте
+set incsearch                " При поиске перескакивать на найденный текст в процессе набора строки
+set nowrapscan               " Останавливать поиск при достижении конца файла
+set ignorecase               " Игнорировать регистр букв при поиске
+set nobackup                 " Отключаем создание бэкапов
+set noswapfile               " Отключаем создание swap файлов
+set fileencodings=utf-8,cp1251,koi8-r,cp866 " Список кодировок файлов для автоопределения
+set visualbell               " Включает виртуальный звонок (моргает, а не бибикает при ошибках)
+set whichwrap=b,s,<,>,[,],l,h " Перемещать курсор на следующую строку при нажатии на клавиши вправо-влево и пр.
+set foldmethod=manual        " Метод фолдинга - вручную (для обычных файлов)
+
+set keymap=russian-jcukenwin " Настраиваем переключение раскладок клавиатуры по <C-^>
+set iminsert=0               " Раскладка по умолчанию - английская
+set imsearch=0               " Раскладка по умолчанию - английская
+
+
+
+
+
+
+
+
+
+""""""" Hotkeys """""""
 
 " esc-esc-esc for exit without save
 map <Esc><Esc><Esc> :q!<CR>
-
-" PowerLine
-let g:Powerline_symbols = 'fancy'
-set encoding=utf-8
 
 " Сохранить файл по <F2>
 nmap <F2> :w!<CR>
@@ -31,7 +94,8 @@ imap <F2> <Esc>:w!<CR>
 vmap <F2> <Esc>:w!<CR>
 inoremap <F2> <c-o>:w<CR>
 
-"imap <c-z> <Esc>u<CR>
+" undo on ctrl-z
+imap <c-z> <Esc>u<CR>
 inoremap <c-z> <c-o>u<CR>
 
 " exit on Esc-0
@@ -45,68 +109,8 @@ map <C-n> :NERDTreeToggle<CR>
 " Ctrl-a show all search results
 map <c-a> :g//p<CR>
 
-" backspace fix - http://vim.wikia.com/wiki/Backspace_and_delete_problems
-set backspace=indent,eol,start
-
 " VimCommander
 noremap <silent> <F11> :cal VimCommanderToggle()<CR>
-
-"Отсюда - http://konishchevdmitry.blogspot.ru/2008/07/howto-vim.html
-" Размер табуляции
-set tabstop=4
-" Размер сдвига при нажатии на клавиши << и >>
-set shiftwidth=4
-" Копирует отступ от предыдущей строки
-set autoindent
-" Включаем 'умную' автоматическую расстановку отступов
-set smartindent
-" Включаем подсветку синтаксиса
-syntax on
-" Включаем перенос строк
-set wrap
-" Перенос строк по словам, а не по буквам
-set linebreak
-" Включаем отображение выполняемой в данный момент команды в правом нижнем углу экрана.
-" К примеру, если вы наберете 2d, то в правом нижнем углу экрана Vim отобразит строку 2d.
-set showcmd
-" Включаем отображение дополнительной информации в статусной строке
-set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
-
-" Включаем подсветку выражения, которое ищется в тексте
-set hlsearch
-" При поиске перескакивать на найденный текст в процессе набора строки
-set incsearch
-" Останавливать поиск при достижении конца файла
-set nowrapscan
-" Игнорировать регистр букв при поиске
-set ignorecase
-
-" Отключаем создание бэкапов
-set nobackup
-" Отключаем создание swap файлов
-set noswapfile
-"" Все swap файлы будут помещаться в эту папку
-"set dir=~/.vim/swp
-
-" Список кодировок файлов для автоопределения
-set fileencodings=utf-8,cp1251,koi8-r,cp866
-
-" Включает виртуальный звонок (моргает, а не бибикает при ошибках)
-set visualbell
-
-" Перемещать курсор на следующую строку при нажатии на клавиши вправо-влево и пр.
-set whichwrap=b,s,<,>,[,],l,h
-
-" Метод фолдинга - вручную (для обычных файлов)
-set foldmethod=manual
-
-" Настраиваем переключение раскладок клавиатуры по <C-^>
-set keymap=russian-jcukenwin
-" Раскладка по умолчанию - английская
-set iminsert=0
-set imsearch=0
-" Highlight lCursor guifg=NONE guibg=Cyan
-
 
 " Более привычные Page Up/Down, когда курсор остаётся в той же строке,
 " а не переносится вверх/вниз экрана, как при стандартном PgUp/PgDown.
@@ -117,45 +121,6 @@ imap <PageUp> <C-O><C-U><C-O><C-U>
 nmap <PageDown> <C-D><C-D>
 imap <PageDown> <C-O><C-D><C-O><C-D>
 
-" Переключение раскладок и индикация выбранной
-" в данный момент раскладки.
-" -->
-	" Переключение раскладок будет производиться по <C-F>
-	"
-	" При английской раскладке статусная строка текущего окна будет синего
-	" цвета, а при русской - зеленого.
-
-	function MyKeyMapHighlight()
-	    if &iminsert == 0
-	        hi StatusLine ctermfg=DarkBlue guifg=DarkBlue
-	    else
-	        hi StatusLine ctermfg=DarkGreen guifg=DarkGreen
-	    endif
-	endfunction
-
-	" Вызываем функцию, чтобы она установила цвета при запуске Vim'a
-	call MyKeyMapHighlight()
-
-	" При изменении активного окна будет выполняться обновление
-	" индикации текущей раскладки
-	au WinEnter * :call MyKeyMapHighlight()
-
-	cmap <silent> <C-F> <C-^>
-	imap <silent> <C-F> <C-^>X<Esc>:call MyKeyMapHighlight()<CR>a<C-H>
-	nmap <silent> <C-F> a<C-^><Esc>:call MyKeyMapHighlight()<CR>
-	vmap <silent> <C-F> <Esc>a<C-^><Esc>:call MyKeyMapHighlight()<CR>gv
-" <--
-
-
-
-
-
-
-
-
-
-
-
 " Ctrl-Space autocomplete Onmicomplete, отсюда - http://stackoverflow.com/questions/510503/ctrlspace-for-omni-and-keyword-completion-in-vim
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-n>" :
@@ -165,79 +130,3 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 imap <C-@> <C-Space>
 
 
-
-
-" From highligts
-
-
-" begin of Vundle include
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'git://git.wincent.com/command-t.git'
-" Plugin 'risbra/csv.vim'
-Plugin 'kien/ctrlp.vim'
-" Plugin 'mru'
-Plugin 'scrooloose/nerdtree'
-Plugin 'evanmiller/nginx-vim-syntax'
-Plugin 'scrooloose/syntastic' " syntax check
-Plugin 'majutsushi/tagbar'
-Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'taglist'
-" Plugin 'joonty/vdebug'
-Plugin 'lpenz/vimcommander' " http://habrahabr.ru/post/137170/
-Plugin 'mhinz/vim-startify' " startup window
-Plugin 'tpope/vim-surround'
-" Plugin 'wakatime/vim-wakatime'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'Markdown'
-
-" Plugin 'daylerees/colour-schemes', {'rtp': 'vim/'}
-
-
-
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-
-" need to set solarized after plugins
-colorscheme solarized
