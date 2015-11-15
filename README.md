@@ -30,3 +30,18 @@ sudo aptitude install cmake # need for YouCompleteMe
 cd ~/.vim/bundle/YouCompleteMe
 ./install.sh
 ```
+
+`sudo aptitude install exuberant-ctags` needs for most code navigation plugins.
+
+
+
+# TODO
+- project settings
+
+
+# vim links
+- [my cheat sheet](cheatsheet.md)
+- [Tabs](http://habrahabr.ru/post/102373/)
+- [Tutorial in slides](http://www.slideshare.net/ZendCon/vim-for-php-programmers-presentation)
+- [Traversing text in Insert mode](http://stackoverflow.com/questions/1737163/traversing-text-in-insert-mode)
+- [Registers](http://stackoverflow.com/a/3997110)
