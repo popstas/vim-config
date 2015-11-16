@@ -1,6 +1,21 @@
+# Settings
+- `:options` - interactive options
+- `:map` - show all keymaps
+
+
 # Navigation
 - `Ctrl-]` - follow link/function (in help `Ctrl-t` for back)
-
+- `<num>gg, :<num>` - go line <num>
+- `gd` - go declaration
+- `Ctrl-w,i` - open declaration in new window
+- `Ctrl-w,v` - split window
+- `'0` - go to last position before file close
+- `Ctrl+o, Ctrl-i` - prev/next cursor position 
+- `` - go to previous line and back
+- `. - go to last modification
+- `gi` - go to last modification in insert mode 
+- `f<letter>` - go to next <letter>
+ 
 
 # Indent
 - `set expandtab` - convert tabs to spaces
@@ -8,6 +23,19 @@
 - `Ctrl-t, Ctrl-d` - shift line in insert mode
 - `=` - reformat text
 
+
+# Edit
+- `ctrl-a` - insert text from last insert mode
+- `d` - delete
+- `c` - delete and insert mode
+
+
+# Search
+- `/` - search
+- `%s/\(search\)/replace\1regexp/gic` - replace all `search` to `replacesearchexp`, global, ignore case, confirm
+- `*`, `#` - next/prev instances of word under cursor 
+- `[I` - show all next words under cursor
+- `vim[grep] pattern file` - recursive search:
 
 # Visual mode
 - `gv` - open last selection
@@ -22,6 +50,10 @@
 
 # Keys in insert mode
 - `:h ins-special-keys` - help
+
+
+# Keys from my config
+- `\t`, `\b`, `\m` - CommandT lists
 
 
 # My search words

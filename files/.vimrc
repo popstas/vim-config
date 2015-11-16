@@ -1,5 +1,3 @@
-" http://konishchevdmitry.blogspot.ru/2008/07/howto-vim.html
-" http://sarkisn.github.io/blog/2014/02/22/vim-config-install/
 
 " begin of Vundle include
 set nocompatible              " be iMproved, required
@@ -10,58 +8,65 @@ call vundle#begin()
 Bundle 'gmarik/Vundle.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'kien/ctrlp.vim'
+Bundle 'terryma/vim-multiple-cursors'
 Bundle 'scrooloose/nerdtree'
-Bundle 'evanmiller/nginx-vim-syntax'
+Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'mhinz/vim-startify'
+Bundle 'wincent/command-t.git'
+
 " syntax check
 Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-Bundle 'terryma/vim-multiple-cursors'
-" http://habrahabr.ru/post/137170/
-Bundle 'lpenz/vimcommander'
-" startup window
-Bundle 'mhinz/vim-startify'
-Bundle 'tpope/vim-surround'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'Markdown'
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
-" Bundle 'git://git.wincent.com/command-t.git'
+" syntax plugins
+Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+Bundle 'evanmiller/nginx-vim-syntax'
+Bundle 'Markdown'
+
+" not used
+Bundle 'majutsushi/tagbar'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-surround'
+
+" Bundle 'kien/ctrlp.vim' " like commandT, but less smart and less fast
 " Bundle 'risbra/csv.vim'
-" Bundle 'mru'
 " Bundle 'taglist'
 " Bundle 'joonty/vdebug'
 " Bundle 'wakatime/vim-wakatime'
 " Bundle 'daylerees/colour-schemes', {'rtp': 'vim/'}
+" Bundle 'lpenz/vimcommander' " http://habrahabr.ru/post/137170/
+" Bundle 'yegappan/mru'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required for Vundle
 
 syntax enable
-set number                   " line numbers
-set mouse=a                  " mouse wheel, see :help mouse
-colorscheme solarized        " let g:solarized_termcolors=256
-set background=dark          " color scheme
 
 
 
 
 """"""" Basic settings """""""
 
+colorscheme solarized        " let g:solarized_termcolors=256
+set background=dark          " color scheme
+
+set number                   " line numbers
+
+set mouse=a                  " mouse wheel, see :help mouse
+set ttymouse=xterm2
+
 set laststatus=2             " Always show Powerline
 set backspace=indent,eol,start " backspace fix - http://vim.wikia.com/wiki/Backspace_and_delete_problems
-
-
 set tabstop=4                " Размер табуляции
+" set expandtab              " Convert tabs to spaces
 set shiftwidth=4             " Размер сдвига при нажатии на клавиши << и >>
 set autoindent               " Копирует отступ от предыдущей строки
 set smartindent              " Включаем 'умную' автоматическую расстановку отступов
-set wrap                     " Включаем перенос строк
+set nowrap                   " Отключаем перенос строк
 set linebreak                " Перенос строк по словам, а не по буквам
 set showcmd                  " Включаем отображение выполняемой в данный момент команды в правом нижнем углу экрана
-set hlsearch                 " Включаем подсветку выражения, которое ищется в тексте
-set incsearch                " При поиске перескакивать на найденный текст в процессе набора строки
+set showmode
+set incsearch
 set nowrapscan               " Останавливать поиск при достижении конца файла
 set ignorecase               " Игнорировать регистр букв при поиске
 set nobackup                 " Отключаем создание бэкапов
@@ -75,6 +80,21 @@ set keymap=russian-jcukenwin " Настраиваем переключение �
 set iminsert=0               " Раскладка по умолчанию - английская
 set imsearch=0               " Раскладка по умолчанию - английская
 
+setlocal foldlevelstart=0    " Уровень сокрытия по умолчанию для вновь открытых файлов
+setlocal foldmethod=syntax   " Метод фолдинга - по синтаксису
+
+set title                    " Set the terminal's title.
+
+set incsearch                " При поиске перескакивать на найденный текст в процессе набора строки
+set showmatch                " Highlighting search results
+set hlsearch
+
+set list                     " Better invisible characters.
+set listchars=tab:▸\ ,eol:\  " Better invisible characters.
+
+
+
+
 
 
 
@@ -85,8 +105,18 @@ set imsearch=0               " Раскладка по умолчанию - ан
 
 """"""" Hotkeys """""""
 
+" alt-codes will work - http://stackoverflow.com/a/10216459
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+    exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+"set timeout timeoutlen=50
+set ttimeout ttimeoutlen=50
+
 " esc-esc-esc for exit without save
-map <Esc><Esc><Esc> :q!<CR>
+"map <Esc><Esc><Esc> :q!<CR>
 
 " Сохранить файл по <F2>
 nmap <F2> :w!<CR>
@@ -94,9 +124,13 @@ imap <F2> <Esc>:w!<CR>
 vmap <F2> <Esc>:w!<CR>
 inoremap <F2> <c-o>:w<CR>
 
+" Quicker Escaping - http://vim.wikia.com/wiki/Avoid_the_escape_key
+imap jj <Esc>
+imap jk <Esc>
+
 " undo on ctrl-z
 imap <c-z> <Esc>u<CR>
-inoremap <c-z> <c-o>u<CR>
+inoremap <c-z> <c-o>u
 
 " exit on Esc-0
 map <Esc>0 :q<CR>
@@ -104,13 +138,37 @@ map <Esc>00 :q!<CR>
 map <Esc>09 ZZ<CR>
 
 " Ctrl-n NerdTree
-map <C-n> :NERDTreeToggle<CR>
+map <F11> :NERDTreeToggle<CR>
+map <s-F11> :NERDTreeFind<CR>
 
-" Ctrl-a show all search results
-map <c-a> :g//p<CR>
+" CpmmandT \t \b \m
+nnoremap <silent> <leader>m :CommandTMRU<CR>
 
-" VimCommander
-noremap <silent> <F11> :cal VimCommanderToggle()<CR>
+" move lines - http://vim.wikia.com/wiki/Moving_lines_up_or_down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Ускоренное передвижение по тексту
+nmap <C-H> 5h
+nmap <C-J> 5j
+nmap <C-K> 5k
+nmap <C-L> 5l
+
+" Клавиши быстрого редактирования строки в режиме вставки
+"imap <C-H> <BS>
+imap <C-J> <Left>
+imap <C-K> <Right>
+imap <C-L> <Del>
+
+" language switch on ctrl-f
+cmap <silent> <C-F> <C-^>
+imap <silent> <C-F> <C-^>
+nmap <silent> <C-F> a<C-^><Esc>
+vmap <silent> <C-F> <Esc>a<C-^><Esc>gv
 
 " Более привычные Page Up/Down, когда курсор остаётся в той же строке,
 " а не переносится вверх/вниз экрана, как при стандартном PgUp/PgDown.
@@ -129,4 +187,48 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>
 
+" switch tabs on ctrl+pageX
+map <c-PageDown> gt
+map <c-PageUp> gT
 
+" repeat last command on F5
+nmap <F5> @:
+
+" select all selected for multiedit
+vmap <F3> "sy:MultipleCursorsFind <c-r>s<CR>
+
+" select next result of vimgrep
+nmap <F3> :cn<CR>
+
+" Ctrl-a show all search results
+map <c-a> :cw<CR>
+"map <c-a> :g//p<CR>
+
+" copy selection to system clipboard in visual mode
+" paste from system clipboard in insert mode
+vmap <F5> "+y
+imap <F5> <c-o>:set paste<CR><c-o>"+P<c-o>:set nopaste<CR>
+
+" visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
+
+
+
+
+
+
+
+
+
+
+
+
+
+""""""" Custom commands """""""
+
+" reload vim
+command! Reload so ~/.vimrc
+
+" G search - contextual search in current file - http://vim.wikia.com/wiki/Find_in_files_within_Vim
+command! -nargs=+ G execute 'silent grep! -B3 -F3 <args> %' | copen 10

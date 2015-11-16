@@ -24,14 +24,26 @@ ln -s ~/vim-config/files/.vimrc ~/.vimrc
 vim -c "PluginUpdate"
 ```
 
-then exit Vim and install YouCompleteMe:
+### Install YouCompleteMe:
 ```
 sudo aptitude install cmake # need for YouCompleteMe
 cd ~/.vim/bundle/YouCompleteMe
 ./install.sh
 ```
 
-`sudo aptitude install exuberant-ctags` needs for most code navigation plugins.
+### Install command-t
+```
+sudo aptitude install ruby ruby-dev
+cd ~/.vim/bundle/command-t/ruby/command-t
+ruby extconf.rb
+make
+```
+
+### Install ctags
+needs for most code navigation plugins.
+```
+sudo aptitude install exuberant-ctags
+``` 
 
 
 
@@ -39,9 +51,13 @@ cd ~/.vim/bundle/YouCompleteMe
 - project settings
 
 
-# vim links
-- [my cheat sheet](cheatsheet.md)
+# Vim links
+- [My cheat sheet](cheatsheet.md)
+- [perfect vimrc vim config file](http://spf13.com/post/perfect-vimrc-vim-config-file)
+- [HowTo по Vim](http://konishchevdmitry.blogspot.ru/2007/09/vim-howto.html)
+- [Очередной HowTo по Vim](http://konishchevdmitry.blogspot.ru/2008/07/howto-vim.html)
+- [Powerline и конфиг](http://sarkisn.github.io/blog/2014/02/22/vim-config-install/)
 - [Tabs](http://habrahabr.ru/post/102373/)
-- [Tutorial in slides](http://www.slideshare.net/ZendCon/vim-for-php-programmers-presentation)
+- [VIM for (PHP) Programmers](http://www.slideshare.net/ZendCon/vim-for-php-programmers-presentation) (28/75)
 - [Traversing text in Insert mode](http://stackoverflow.com/questions/1737163/traversing-text-in-insert-mode)
-- [Registers](http://stackoverflow.com/a/3997110)
+- [Vim registers](http://stackoverflow.com/a/3997110)
