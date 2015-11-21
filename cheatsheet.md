@@ -54,6 +54,7 @@
 
 # Keys from my config
 - `\t`, `\b`, `\m` - CommandT lists
+- `ci` - comment invert (Nerd commenter)
 
 
 # My search words

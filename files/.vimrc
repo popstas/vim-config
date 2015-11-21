@@ -13,6 +13,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'mhinz/vim-startify'
 Bundle 'wincent/command-t.git'
+Bundle 'scrooloose/nerdcommenter'
+Plugin 'godlygeek/tabular'
 
 " syntax check
 Bundle 'scrooloose/syntastic'
@@ -20,13 +22,13 @@ Bundle 'scrooloose/syntastic'
 " syntax plugins
 Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 Bundle 'evanmiller/nginx-vim-syntax'
-Bundle 'Markdown'
+Plugin 'plasticboy/vim-markdown'
 
 " not used
 Bundle 'majutsushi/tagbar'
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-surround'
 
+" Bundle 'Valloric/YouCompleteMe'
 " Bundle 'kien/ctrlp.vim' " like commandT, but less smart and less fast
 " Bundle 'risbra/csv.vim'
 " Bundle 'taglist'
@@ -92,12 +94,16 @@ set hlsearch
 set list                     " Better invisible characters.
 set listchars=tab:▸\ ,eol:\  " Better invisible characters.
 
+let g:vim_markdown_folding_disabled=1
 
 
 
-
-
-
+""""""" GVim """""""
+set linespace=3
+set guioptions-=T            " Отключаем панель инструментов
+set guioptions+=c            " Отключаем графические диалоги
+set guioptions-=e            " Отключаем графические табы (текстовые занимают меньше места)
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 
 
 
@@ -126,7 +132,6 @@ inoremap <F2> <c-o>:w<CR>
 
 " Quicker Escaping - http://vim.wikia.com/wiki/Avoid_the_escape_key
 imap jj <Esc>
-imap jk <Esc>
 
 " undo on ctrl-z
 imap <c-z> <Esc>u<CR>
@@ -213,7 +218,12 @@ imap <F5> <c-o>:set paste<CR><c-o>"+P<c-o>:set nopaste<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-
+set timeoutlen=300
+" nmap <c-w> viw
+nmap <c-w><c-w> viw
+imap <c-w><c-w> viw
+nmap <c-w><c-w><c-w> vip
+imap <c-w><c-w><c-w> vip
 
 
 
