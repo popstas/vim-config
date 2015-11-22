@@ -52,7 +52,8 @@ syntax enable
 colorscheme solarized        " let g:solarized_termcolors=256
 set background=dark          " color scheme
 
-set number                   " line numbers
+set clipboard=unnamedplus    " use system clipboard
+set number                   " use line numbers
 
 set mouse=a                  " mouse wheel, see :help mouse
 set ttymouse=xterm2
