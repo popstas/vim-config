@@ -50,6 +50,7 @@ sudo aptitude install exuberant-ctags
 
 # Vim links
 - [My cheat sheet](cheatsheet.md)
+- [vimrc by gmaric, vundle developer](https://github.com/gmarik/vimfiles/blob/master/vimrc)
 - [perfect vimrc vim config file](http://spf13.com/post/perfect-vimrc-vim-config-file)
 - [HowTo по Vim](http://konishchevdmitry.blogspot.ru/2007/09/vim-howto.html)
 - [Очередной HowTo по Vim](http://konishchevdmitry.blogspot.ru/2008/07/howto-vim.html)
