@@ -5,7 +5,7 @@ filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Bundle 'gmarik/Vundle.vim'
+Bundle 'VundleVim/Vundle.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'terryma/vim-multiple-cursors'
