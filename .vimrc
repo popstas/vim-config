@@ -22,7 +22,7 @@ Plugin 'godlygeek/tabular'
 Bundle 'scrooloose/syntastic'
 
 " syntax plugins
-Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+" Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'} " too heavy
 Bundle 'evanmiller/nginx-vim-syntax'
 Plugin 'plasticboy/vim-markdown'
 
