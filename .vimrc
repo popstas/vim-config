@@ -23,7 +23,7 @@ Bundle 'scrooloose/syntastic'
 
 " syntax plugins
 " Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'} " too heavy
-Bundle 'evanmiller/nginx-vim-syntax'
+Bundle 'nginx.vim'
 Plugin 'plasticboy/vim-markdown'
 
 " not used
