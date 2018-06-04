@@ -17,6 +17,8 @@ Bundle 'mhinz/vim-startify'
 Bundle 'wincent/command-t.git'
 Bundle 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
+Plugin 'kassio/neoterm'
+Plugin 'vim-utils/vim-man'
 
 " syntax check
 Bundle 'scrooloose/syntastic'
