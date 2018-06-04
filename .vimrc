@@ -7,40 +7,40 @@ filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Bundle 'VundleVim/Vundle.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'scrooloose/nerdtree'
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'mhinz/vim-startify'
-Bundle 'wincent/command-t.git'
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'scrooloose/nerdtree'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'mhinz/vim-startify'
+Plugin 'wincent/command-t.git'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'kassio/neoterm'
 Plugin 'vim-utils/vim-man'
 
 " syntax check
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
 " syntax plugins
 " Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'} " too heavy
-Bundle 'rhowardiv/nginx-vim-syntax'
+Plugin 'rhowardiv/nginx-vim-syntax'
 Plugin 'plasticboy/vim-markdown'
 
 " not used
-Bundle 'majutsushi/tagbar'
-Bundle 'tpope/vim-surround'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-surround'
 
-" Bundle 'Valloric/YouCompleteMe'
-" Bundle 'kien/ctrlp.vim' " like commandT, but less smart and less fast
-" Bundle 'risbra/csv.vim'
-" Bundle 'taglist'
-" Bundle 'joonty/vdebug'
-" Bundle 'wakatime/vim-wakatime'
-" Bundle 'daylerees/colour-schemes', {'rtp': 'vim/'}
-" Bundle 'lpenz/vimcommander' " http://habrahabr.ru/post/137170/
-" Bundle 'yegappan/mru'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'kien/ctrlp.vim' " like commandT, but less smart and less fast
+" Plugin 'risbra/csv.vim'
+" Plugin 'taglist'
+" Plugin 'joonty/vdebug'
+" Plugin 'wakatime/vim-wakatime'
+" Plugin 'daylerees/colour-schemes', {'rtp': 'vim/'}
+" Plugin 'lpenz/vimcommander' " http://habrahabr.ru/post/137170/
+" Plugin 'yegappan/mru'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
